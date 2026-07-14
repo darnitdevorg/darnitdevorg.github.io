@@ -1,0 +1,254 @@
+{{ define "main" }}
+
+<section class="hero" id="home">
+  <div class="hero__logo">
+    <img src="/images/logo.png" alt="The Darnit logo — a hooded figure knitting rows of code">
+    <h1>
+      <strong>Darnit</strong><br>
+      Pluggable Compliance Audit&nbsp;Framework
+    </h1>
+  </div>
+  <div>
+    <h2>
+      Patch the Holes<br>
+      in Your Software
+    </h2>
+    <p>
+      Like darning a sock, but for code — Darnit audits your project against software engineering best
+      practices, patches the gaps automatically, and proves the result with signed attestations.
+    </p>
+  </div>
+</section>
+<section class="stats-section section--alt">
+  <div class="container">
+    <div class="stats-bar">
+      <div class="stat">
+        <strong>62</strong>
+        <div>
+          controls in the bundled <a href="https://baseline.openssf.org/">OpenSSF Baseline</a> implementation
+        </div>
+      </div>
+      <div class="stat">
+        <strong>8</strong>
+        <div>control categories, from access control to vulnerability management</div>
+      </div>
+      <div class="stat">
+        <strong>3</strong>
+        <div>maturity levels to grow through as your project matures</div>
+      </div>
+      <div class="stat">
+        <strong>0</strong>
+        <div>forks needed — compose your own posture in pure TOML</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="about">
+  <div class="container">
+    <div class="seclabel">About</div>
+    <div class="text-s">
+      <h2 class="sechead">Compliance Tooling That Actually Closes the Gaps</h2>
+      <p>
+        Darnit is a pluggable framework for auditing projects against engineering best practices. It provides
+        the infrastructure for running compliance audits, generating cryptographic attestations, and automating
+        remediation — so conformance is something you run, not something you write in a spreadsheet.
+      </p>
+      <p>
+        Security is a key focus, but Darnit covers the full spectrum of software quality: security posture,
+        testing practices, build reproducibility, project governance, and documentation standards. Pass logic
+        is expressed in <a href="https://cel.dev/">CEL</a>, and plugins are signed and verified with
+        <a href="https://www.sigstore.dev/">Sigstore</a>.
+      </p>
+      <p>
+        Darnit is AI-native, too: it ships an MCP server so assistants like Claude can audit, remediate, and
+        attest interactively. Built in the open by <a href="https://kusari.dev">Kusari</a> and contributors,
+        under Apache-2.0.
+      </p>
+    </div>
+    <div class="chain-anim">
+      <div class="chain-anim__desc">darnit audit</div>
+      <div class="chain-anim__chain">
+        <div class="chain-anim__part">
+          <div class="chain-anim__circle"></div>
+          <div>
+            <h3>Configure</h3>
+            <i>.project.yaml</i>
+          </div>
+        </div>
+        <div class="chain-anim__part">
+          <div class="chain-anim__circle"></div>
+          <div>
+            <h3>Audit</h3>
+            <i>62 Controls</i>
+          </div>
+        </div>
+        <div class="chain-anim__part">
+          <div class="chain-anim__circle"></div>
+          <div>
+            <h3>Report</h3>
+            <i>Gaps Surfaced</i>
+          </div>
+        </div>
+        <div class="chain-anim__part">
+          <div class="chain-anim__circle"></div>
+          <div>
+            <h3>Remediate</h3>
+            <i>Dry-Run First</i>
+          </div>
+        </div>
+        <div class="chain-anim__part">
+          <div class="chain-anim__circle"></div>
+          <div>
+            <h3>Attest</h3>
+            <i>Signed in-toto</i>
+          </div>
+        </div>
+        <svg class="chain-anim__cube" width="24" height="24" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="128" cy="128" r="122" fill="#fff"/>
+          <circle cx="128" cy="128" r="104" fill="#091e34"/>
+          <path d="M42 98 Q128 44 214 98" stroke="#d3e9ea" stroke-width="15" fill="none" stroke-linecap="round"/>
+          <path d="M30 142 Q128 94 226 142" stroke="#d3e9ea" stroke-width="15" fill="none" stroke-linecap="round"/>
+          <path d="M50 184 Q128 142 206 184" stroke="#d3e9ea" stroke-width="15" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section--alt" id="features">
+  <div class="container">
+    <div class="seclabel">Features</div>
+    <div class="pillars-content">
+      <h2 class="sechead">Audit, Remediate, Attest — and Make It Yours</h2>
+      <p class="secdesc">One framework carries a finding from detection to verified fix.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <h3>
+            <span>01</span>
+            <strong>Audit</strong>
+          </h3>
+          <p>
+            Run any repository against pluggable compliance standards. The bundled
+            <a href="https://baseline.openssf.org/">OpenSSF Baseline</a> implementation checks 62 controls
+            across access control, build &amp; release, documentation, governance, legal, quality, security
+            architecture, and vulnerability management — with flexible pass logic written in CEL.
+          </p>
+        </div>
+        <div class="pillar">
+          <h3>
+            <span>02</span>
+            <strong>Remediate</strong>
+          </h3>
+          <p>
+            Close common compliance gaps automatically: missing security policies, contributing guides, and
+            other documentation and governance fixes. Every remediation supports dry-run previews, so you see
+            exactly what would change before anything lands in your repo.
+          </p>
+        </div>
+        <div class="pillar">
+          <h3>
+            <span>03</span>
+            <strong>Attest</strong>
+          </h3>
+          <p>
+            Turn audit results into cryptographically signed <a href="https://in-toto.io/">in-toto</a>
+            attestations that downstream consumers can verify. Plugins themselves are signed and verified via
+            Sigstore, keeping the toolchain as trustworthy as the claims it produces.
+          </p>
+        </div>
+        <div class="pillar">
+          <h3>
+            <span>04</span>
+            <strong>Extend</strong>
+          </h3>
+          <p>
+            Implement any standard as a Darnit plugin, or assemble your organization's posture as a TOML-only
+            mix of slices from installed implementations — no forking, no Python required. An MCP server plugs
+            the whole workflow into AI assistants for interactive auditing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="get-started">
+  <div class="container">
+    <div class="contact">
+      <div>
+        <div class="seclabel">Install</div>
+        <h2 class="sechead">From Source, in Four Lines</h2>
+        <pre><span class="prompt">$</span> git clone https://github.com/kusari-oss/darnit
+<span class="prompt">$</span> cd darnit
+<span class="prompt">$</span> uv sync
+<span class="prompt">$</span> uv run darnit audit /path/to/repo</pre>
+        <p class="text-xs">
+          Requires Python 3.11+ and <a href="https://docs.astral.sh/uv/">uv</a>. Packaged channels — PyPI,
+          Homebrew, containers — are on the way.
+        </p>
+      </div>
+      <div>
+        <div class="seclabel">MCP</div>
+        <h2 class="sechead">Bring Your AI Assistant</h2>
+        <pre><span class="comment"># expose Darnit to any MCP client</span>
+<span class="prompt">$</span> uv run darnit serve --framework openssf-baseline</pre>
+        <p class="text-xs">
+          Point Claude — or any MCP-capable assistant — at the server to audit, remediate, and attest
+          interactively. See the
+          <a href="https://github.com/kusari-oss/darnit/blob/main/GETTING_STARTED.md">getting started guide</a>
+          for the full walkthrough.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section--alt" id="community">
+  <div class="container">
+    <div class="contact">
+      <div>
+        <div class="seclabel">Community</div>
+        <h2 class="sechead">Get Involved</h2>
+        <p>
+          Issues, ideas, and pull requests are welcome — whether you're fixing a control, writing a plugin for
+          a new standard, or improving the docs. Development happens in the open on GitHub.
+        </p>
+        <a href="https://github.com/kusari-oss/darnit" class="button">Star on GitHub</a>
+      </div>
+      <div>
+        <div class="seclabel">Project</div>
+        <h2 class="sechead">Built in the Open</h2>
+        <p>
+          Darnit is an Apache-2.0 licensed open source project by Kusari and contributors. Read the
+          <a href="https://github.com/kusari-oss/darnit/blob/main/CONTRIBUTING.md">contributing guide</a>,
+          the <a href="https://github.com/kusari-oss/darnit/blob/main/GOVERNANCE.md">governance model</a>, and
+          the <a href="https://github.com/kusari-oss/darnit/blob/main/SECURITY.md">security policy</a> to get
+          oriented.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* stat counter animation */
+document.querySelectorAll(".stats-bar .stat strong").forEach((counter) => {
+  const match = counter.textContent.trim().match(/^([\d.]+)(.*)$/);
+  if (!match) return;
+
+  const target = Number(match[1]);
+  const suffix = match[2];
+  const decimals = match[1].includes(".") ? match[1].split(".")[1].length : 0;
+  const duration = 1200;
+  const start = performance.now();
+
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    counter.textContent = `${(target * eased).toFixed(decimals)}${suffix}`;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+
+  counter.textContent = `${(0).toFixed(decimals)}${suffix}`;
+  requestAnimationFrame(update);
+});
+</script>
+
+{{ end }}

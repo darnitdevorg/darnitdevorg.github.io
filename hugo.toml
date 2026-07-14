@@ -1,0 +1,10 @@
+# Change baseURL when the final home is decided:
+#   - org root site (repo named `darnitdevorg.github.io`): https://darnitdevorg.github.io/
+#   - custom domain: https://darnit.dev/
+baseURL = 'https://darnitdevorg.github.io/'
+locale = 'en-us'
+title = 'Darnit'
+disableKinds = ['taxonomy', 'term']
+
+[params]
+    defaultSummary = "Darnit patches holes in your software — like darning a sock, but for code. A pluggable compliance audit framework with automated remediation and signed attestations."
