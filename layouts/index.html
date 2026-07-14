@@ -65,109 +65,64 @@
         under Apache-2.0.
       </p>
     </div>
-    <div class="chain-anim">
-      <div class="chain-anim__desc">darnit audit</div>
-      <div class="chain-anim__chain">
-        <div class="chain-anim__part">
-          <div class="chain-anim__circle"></div>
-          <div>
-            <h3>Configure</h3>
-            <i>.project.yaml</i>
-          </div>
-        </div>
-        <div class="chain-anim__part">
-          <div class="chain-anim__circle"></div>
-          <div>
-            <h3>Audit</h3>
-            <i>62 Controls</i>
-          </div>
-        </div>
-        <div class="chain-anim__part">
-          <div class="chain-anim__circle"></div>
-          <div>
-            <h3>Report</h3>
-            <i>Gaps Surfaced</i>
-          </div>
-        </div>
-        <div class="chain-anim__part">
-          <div class="chain-anim__circle"></div>
-          <div>
-            <h3>Remediate</h3>
-            <i>Dry-Run First</i>
-          </div>
-        </div>
-        <div class="chain-anim__part">
-          <div class="chain-anim__circle"></div>
-          <div>
-            <h3>Attest</h3>
-            <i>Signed in-toto</i>
-          </div>
-        </div>
-        <svg class="chain-anim__cube" width="24" height="24" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="128" cy="128" r="122" fill="#fff"/>
-          <circle cx="128" cy="128" r="104" fill="#091e34"/>
-          <path d="M42 98 Q128 44 214 98" stroke="#d3e9ea" stroke-width="15" fill="none" stroke-linecap="round"/>
-          <path d="M30 142 Q128 94 226 142" stroke="#d3e9ea" stroke-width="15" fill="none" stroke-linecap="round"/>
-          <path d="M50 184 Q128 142 206 184" stroke="#d3e9ea" stroke-width="15" fill="none" stroke-linecap="round"/>
-        </svg>
       </div>
-    </div>
-  </div>
 </section>
-<section class="section--alt" id="features">
+<section class="section--alt" id="baseline">
   <div class="container">
-    <div class="seclabel">Features</div>
-    <div class="pillars-content">
-      <h2 class="sechead">Audit, Remediate, Attest — and Make It Yours</h2>
-      <p class="secdesc">One framework carries a finding from detection to verified fix.</p>
-      <div class="pillars">
-        <div class="pillar">
-          <h3>
-            <span>01</span>
-            <strong>Audit</strong>
-          </h3>
-          <p>
-            Run any repository against pluggable compliance standards. The bundled
-            <a href="https://baseline.openssf.org/">OpenSSF Baseline</a> implementation checks 62 controls
-            across access control, build &amp; release, documentation, governance, legal, quality, security
-            architecture, and vulnerability management — with flexible pass logic written in CEL.
-          </p>
-        </div>
-        <div class="pillar">
-          <h3>
-            <span>02</span>
-            <strong>Remediate</strong>
-          </h3>
-          <p>
-            Close common compliance gaps automatically: missing security policies, contributing guides, and
-            other documentation and governance fixes. Every remediation supports dry-run previews, so you see
-            exactly what would change before anything lands in your repo.
-          </p>
-        </div>
-        <div class="pillar">
-          <h3>
-            <span>03</span>
-            <strong>Attest</strong>
-          </h3>
-          <p>
-            Turn audit results into cryptographically signed <a href="https://in-toto.io/">in-toto</a>
-            attestations that downstream consumers can verify. Plugins themselves are signed and verified via
-            Sigstore, keeping the toolchain as trustworthy as the claims it produces.
-          </p>
-        </div>
-        <div class="pillar">
-          <h3>
-            <span>04</span>
-            <strong>Extend</strong>
-          </h3>
-          <p>
-            Implement any standard as a Darnit plugin, or assemble your organization's posture as a TOML-only
-            mix of slices from installed implementations — no forking, no Python required. An MCP server plugs
-            the whole workflow into AI assistants for interactive auditing.
-          </p>
-        </div>
+    <div class="seclabel">OpenSSF Baseline</div>
+    <h2 class="sechead">What Darnit Checks Out of the Box</h2>
+    <p class="secdesc">
+      The bundled <a href="https://baseline.openssf.org/">OpenSSF Baseline</a> implementation covers 62 controls
+      across eight categories and three maturity levels.
+    </p>
+    <div class="cats">
+      <div class="cat">
+        <span class="cat__code">OSPS-AC</span>
+        <h3>Access Control</h3>
+        <p>Branch protection, MFA, and least-privilege permissions on repos and CI.</p>
+      </div>
+      <div class="cat">
+        <span class="cat__code">OSPS-BR</span>
+        <h3>Build &amp; Release</h3>
+        <p>Signed artifacts, pinned dependencies, and sane release processes.</p>
+      </div>
+      <div class="cat">
+        <span class="cat__code">OSPS-DO</span>
+        <h3>Documentation</h3>
+        <p>READMEs, changelogs, and support information users can rely on.</p>
+      </div>
+      <div class="cat">
+        <span class="cat__code">OSPS-GV</span>
+        <h3>Governance</h3>
+        <p>Maintainer documentation, contribution guidelines, and response expectations.</p>
+      </div>
+      <div class="cat">
+        <span class="cat__code">OSPS-LE</span>
+        <h3>Legal</h3>
+        <p>Licensing that is present, clear, and consistent across the project.</p>
+      </div>
+      <div class="cat">
+        <span class="cat__code">OSPS-QA</span>
+        <h3>Quality</h3>
+        <p>Code review requirements, CI/CD quality gates, and test coverage.</p>
+      </div>
+      <div class="cat">
+        <span class="cat__code">OSPS-SA</span>
+        <h3>Security Architecture</h3>
+        <p>Threat modeling and a secure-by-design posture for the codebase.</p>
+      </div>
+      <div class="cat">
+        <span class="cat__code">OSPS-VM</span>
+        <h3>Vulnerability Management</h3>
+        <p>Security policies, reporting channels, and timely response to findings.</p>
       </div>
     </div>
+    <p class="text-s">
+      The Baseline is only the first plugin: the repo already ships
+      <a href="https://github.com/kusari-oss/darnit/tree/main/packages/darnit-reproducibility">reproducibility checks</a>
+      and <a href="https://github.com/kusari-oss/darnit/tree/main/packages/darnit-gittuf">gittuf policy checks</a>,
+      and any standard can be implemented — or composed in pure TOML — as a Darnit plugin.
+    </p>
   </div>
 </section>
 <section id="get-started">
