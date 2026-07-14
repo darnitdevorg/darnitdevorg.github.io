@@ -7,6 +7,4 @@ The website for [Darnit](https://github.com/kusari-oss/darnit) — a pluggable c
 Built with [Hugo](https://gohugo.io/) and deployed to GitHub Pages via GitHub Actions.
 Development instructions are in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
-The site structure is derived from the [NSOC website](https://github.com/nsoc-nyu/nsoc-website)
-(Apache-2.0, © New York University). Authorship and licensing information is recorded in
-[`REUSE.toml`](./REUSE.toml).
+Authorship and licensing information is recorded in [`REUSE.toml`](./REUSE.toml).
