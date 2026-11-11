@@ -1,8 +1,9 @@
 {{ define "main" }}
+{{ $repo := "https://github.com/darnitdevorg/darnit" }}
 
 <section class="hero" id="home">
   <div class="hero__logo">
-    <img src="/images/logo.png" alt="The Darnit logo — a hooded figure knitting rows of code">
+    <img src="/images/logo.png" alt="The Darnit mascot, a hooded figure knitting rows of code">
     <h1>
       <strong>Darnit</strong><br>
       Pluggable Compliance Audit&nbsp;Framework
@@ -14,18 +15,28 @@
       in Your Software
     </h2>
     <p>
-      Like darning a sock, but for code. Darnit audits your project against software engineering best
-      practices, patches the gaps automatically, and proves the result with signed attestations.
+      Like darning a sock, but for code. Darnit audits your repository against standards such as the
+      OpenSSF Baseline, fixes the gaps it finds once you approve each change, and records the result in a
+      signed attestation.
+    </p>
+    <div class="hero__cta">
+      <a href="#get-started" class="button">Get Started</a>
+      <a href="{{ $repo }}" class="button button--ghost">View on GitHub</a>
+    </div>
+    <p class="hero__meta">
+      <a href="{{ $repo }}/releases">Latest release v0.1.1</a> · Apache-2.0 · An <a href="https://openssf.org/">OpenSSF</a> project
     </p>
   </div>
 </section>
+
 <section class="stats-section section--alt">
   <div class="container">
     <div class="stats-bar">
       <div class="stat">
         <strong>62</strong>
         <div>
-          controls in the bundled <a href="https://baseline.openssf.org/">OpenSSF Baseline</a> implementation
+          controls in the bundled <a href="https://baseline.openssf.org/">OpenSSF Baseline</a> plugin
+          (OSPS v2026.02.19)
         </div>
       </div>
       <div class="stat">
@@ -37,43 +48,183 @@
         <div>maturity levels to grow through as your project matures</div>
       </div>
       <div class="stat">
-        <strong>0</strong>
-        <div>forks needed, compose your own posture in pure TOML</div>
+        <strong>4</strong>
+        <div>standards shipped as plugins: Baseline, reproducibility, gittuf, and CSL</div>
       </div>
     </div>
   </div>
 </section>
+
 <section id="about">
   <div class="container">
     <div class="seclabel">About</div>
     <div class="text-s">
-      <h2 class="sechead">Compliance Tooling That Actually Closes the Gaps</h2>
+      <h2 class="sechead">Compliance Tooling That Closes the Gaps</h2>
       <p>
-        Darnit is a pluggable framework for auditing projects against engineering best practices. It provides
-        the infrastructure for running compliance audits, generating cryptographic attestations, and automating
-        remediation, so conformance is something you run, not something you write in a spreadsheet.
+        Most compliance tools give you a score and leave the work to you. Darnit runs the checks, gathers
+        the project context it needs, drafts the fixes, and produces a signed attestation you can hand to
+        users, foundations, or auditors. Compliance becomes a step you run, not a spreadsheet you fill in.
       </p>
       <p>
-        Security is a key focus, but Darnit covers the full spectrum of software quality: security posture,
-        testing practices, build reproducibility, project governance, and documentation standards. Pass logic
-        is expressed in <a href="https://cel.dev/">CEL</a>, and plugins are signed and verified with
-        <a href="https://www.sigstore.dev/">Sigstore</a>.
-      </p>
-      <p>
-        Darnit is AI-native, too: it ships an MCP server so agents can audit, remediate, and
-        attest interactively. Built in the open by <a href="https://kusari.dev">Kusari</a> and contributors,
-        under Apache-2.0.
+        Security is a key focus, but the checks go further: testing practices, build reproducibility,
+        project governance, licensing, and documentation. Each standard is a plugin, and the
+        <a href="https://baseline.openssf.org/">OpenSSF Baseline</a> plugin ships in the box.
       </p>
     </div>
+    <div class="audience">
+      <div>
+        <h3>Maintainers</h3>
+        <p>Find out where your project stands against the Baseline and close the gaps in one pull request.</p>
       </div>
+      <div>
+        <h3>Foundations &amp; OSPOs</h3>
+        <p>Check many repositories against one shared standard and collect signed evidence of the results.</p>
+      </div>
+      <div>
+        <h3>Standards authors</h3>
+        <p>Turn a written policy into controls you can run, as a plugin or as a composition written in TOML.</p>
+      </div>
+    </div>
+  </div>
 </section>
+
+<section class="section--alt" id="how-it-works">
+  <div class="container">
+    <div class="seclabel">How It Works</div>
+    <h2 class="sechead">Audit, Confirm, Remediate, Attest</h2>
+    <p class="secdesc">
+      Darnit works through a project in four steps. Nothing on the repository or the platform changes
+      without your approval.
+    </p>
+    <ol class="steps">
+      <li class="step">
+        <span class="step__num">01</span>
+        <h3>Audit</h3>
+        <p>
+          Each control passes through the <em>sieve</em>: deterministic checks first, then pattern matching,
+          then a question to your AI assistant, and finally manual verification. A control passes only when
+          a check proves it.
+        </p>
+      </li>
+      <li class="step">
+        <span class="step__num">02</span>
+        <h3>Confirm Context</h3>
+        <p>
+          Darnit never guesses facts that only you can know, such as maintainers or security contacts. It
+          asks you, records your answers in <code>.project/</code>, and re-audits.
+        </p>
+      </li>
+      <li class="step">
+        <span class="step__num">03</span>
+        <h3>Remediate</h3>
+        <p>
+          Fixes are previewed by default, and only the changes you approve are applied. Platform settings
+          are only ever tightened, never weakened. Darnit then opens a branch and a pull request with the
+          files it wrote.
+        </p>
+      </li>
+      <li class="step">
+        <span class="step__num">04</span>
+        <h3>Attest</h3>
+        <p>
+          The result is an <a href="https://in-toto.io/">in-toto</a> attestation signed with
+          <a href="https://www.sigstore.dev/">Sigstore</a>, so anyone can verify your compliance claims
+          without trusting a screenshot.
+        </p>
+      </li>
+    </ol>
+
+    <div class="sieve" aria-label="The sieve pipeline">
+      <div class="sieve__stage"><span>1</span>Deterministic<small>file exists? API says?</small></div>
+      <div class="sieve__stage"><span>2</span>Pattern<small>regex &amp; heuristics</small></div>
+      <div class="sieve__stage"><span>3</span>LLM<small>ask the calling agent</small></div>
+      <div class="sieve__stage"><span>4</span>Manual<small>human verification</small></div>
+    </div>
+    <p class="text-xs sieve__note">
+      <strong>Conservative by default:</strong> a result of <code>WARN</code> means “we don’t know yet” and
+      counts as not passing. A wrong pass is worse than an honest gap.
+    </p>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <div class="seclabel">Features</div>
+    <h2 class="sechead">Built to Be Extended</h2>
+    <div class="cats features">
+      <div class="cat">
+        <h3>Plugin Architecture</h3>
+        <p>Implement any compliance standard as a Darnit plugin, with controls declared in TOML.</p>
+      </div>
+      <div class="cat">
+        <h3>Compose in TOML</h3>
+        <p>
+          Combine slices of the plugins you have installed into your organization’s own posture, with no
+          forking and no Python.
+        </p>
+      </div>
+      <div class="cat">
+        <h3>Agent-Native</h3>
+        <p>An MCP server and ready-made skills let Claude Code and other agents audit and fix your project in conversation.</p>
+      </div>
+      <div class="cat">
+        <h3>Safe Remediation</h3>
+        <p>Dry run by default, approval tied to the exact change, and settings that are only ever tightened.</p>
+      </div>
+      <div class="cat">
+        <h3>Signed Attestations</h3>
+        <p>in-toto statements signed with Sigstore. Plugins are signed and verified too.</p>
+      </div>
+      <div class="cat">
+        <h3>CEL Pass Logic</h3>
+        <p>Pass conditions are written in <a href="https://cel.dev/">CEL</a>, so they are readable and easy to review.</p>
+      </div>
+      <div class="cat">
+        <h3>Project Context</h3>
+        <p>A single <code>.project.yaml</code> records where your docs and policies live and what you have confirmed.</p>
+      </div>
+      <div class="cat">
+        <h3>STRIDE Threat Model <span class="tag">alpha</span></h3>
+        <p>Drafts a starting threat model, best for Python web services and MCP servers.</p>
+      </div>
+    </div>
+
+    <div class="compose">
+      <div class="text-s">
+        <h3 class="subhead">Your Standard, Without a Fork</h3>
+        <p>
+          Need “Baseline levels 1–2, every gittuf check, and one rule of our own”? Write it as a composition
+          in TOML. Darnit resolves it when it loads, and the controls you pull in stay up to date with
+          their upstream plugins.
+        </p>
+        <p class="text-xs">
+          <a href="{{ $repo }}/blob/main/specs/013-plugin-composition/quickstart.md">Composition quickstart →</a>
+        </p>
+      </div>
+<pre class="no-copy"><span class="comment"># acme-baseline.toml</span>
+<span class="toml-key">[[compose]]</span>
+source           = <span class="toml-str">"openssf-baseline"</span>
+include_levels   = [1, 2]
+exclude_controls = [<span class="toml-str">"OSPS-AC-02.01"</span>]
+
+<span class="toml-key">[[compose]]</span>
+source      = <span class="toml-str">"darnit-gittuf"</span>
+include_all = true
+
+<span class="toml-key">[controls."ACME-DEPLOY-01.01"]</span>
+name  = <span class="toml-str">"DeployWindowEnforced"</span>
+level = 1</pre>
+    </div>
+  </div>
+</section>
+
 <section class="section--alt" id="baseline">
   <div class="container">
     <div class="seclabel">OpenSSF Baseline</div>
     <h2 class="sechead">What Darnit Checks Out of the Box</h2>
     <p class="secdesc">
-      The bundled <a href="https://baseline.openssf.org/">OpenSSF Baseline</a> implementation covers 62 controls
-      across eight categories and three maturity levels.
+      The bundled <a href="https://baseline.openssf.org/">OpenSSF Baseline</a> implementation (OSPS
+      v2026.02.19) covers 62 controls across eight categories and three maturity levels.
     </p>
     <div class="cats">
       <div class="cat">
@@ -84,7 +235,7 @@
       <div class="cat">
         <span class="cat__code">OSPS-BR</span>
         <h3>Build &amp; Release</h3>
-        <p>Signed artifacts, pinned dependencies, and sane release processes.</p>
+        <p>Signed artifacts, pinned dependencies, and sound release processes.</p>
       </div>
       <div class="cat">
         <span class="cat__code">OSPS-DO</span>
@@ -99,12 +250,12 @@
       <div class="cat">
         <span class="cat__code">OSPS-LE</span>
         <h3>Legal</h3>
-        <p>Licensing that is present, clear, and consistent across the project.</p>
+        <p>Clear, consistent licensing and contributor agreements (DCO or CLA).</p>
       </div>
       <div class="cat">
         <span class="cat__code">OSPS-QA</span>
         <h3>Quality</h3>
-        <p>Code review requirements, CI/CD quality gates, and test coverage.</p>
+        <p>Code review requirements, CI/CD quality gates, testing, and static analysis.</p>
       </div>
       <div class="cat">
         <span class="cat__code">OSPS-SA</span>
@@ -114,47 +265,65 @@
       <div class="cat">
         <span class="cat__code">OSPS-VM</span>
         <h3>Vulnerability Management</h3>
-        <p>Security policies, reporting channels, and timely response to findings.</p>
+        <p>Security policies, dependency scanning, and timely response to advisories.</p>
       </div>
     </div>
     <p class="text-s">
-      The Baseline is only the first plugin: the repo already ships
-      <a href="https://github.com/kusari-oss/darnit/tree/main/packages/darnit-reproducibility">reproducibility checks</a>
-      and <a href="https://github.com/kusari-oss/darnit/tree/main/packages/darnit-gittuf">gittuf policy checks</a>,
-      and any standard can be implemented, or composed in pure TOML, as a Darnit plugin.
+      The Baseline is the first of several plugins. The repository also ships
+      <a href="{{ $repo }}/tree/main/packages/darnit-reproducibility">reproducibility checks</a>,
+      <a href="{{ $repo }}/tree/main/packages/darnit-gittuf">gittuf policy checks</a>, and
+      <a href="{{ $repo }}/tree/main/packages/darnit-csl">Community Specification License</a> checks. To
+      write your own, start from the
+      <a href="{{ $repo }}/blob/main/docs/packaging-plugins.md">plugin packaging guide</a>.
     </p>
   </div>
 </section>
+
 <section id="get-started">
   <div class="container">
+    <div class="seclabel">Get Started</div>
+    <h2 class="sechead">Up and Running in Two Commands</h2>
     <div class="contact">
       <div>
-        <div class="seclabel">Install</div>
-        <h2 class="sechead">From Source, in Four Lines</h2>
-        <pre><span class="prompt">$</span> git clone https://github.com/kusari-oss/darnit
-<span class="prompt">$</span> cd darnit
-<span class="prompt">$</span> uv sync
-<span class="prompt">$</span> uv run darnit audit /path/to/repo</pre>
+        <h3 class="subhead"><span class="step__num">1</span> Install</h3>
+        <pre><span class="prompt">$</span> uv tool install git+{{ $repo }}</pre>
         <p class="text-xs">
-          Requires Python 3.11+ and <a href="https://docs.astral.sh/uv/">uv</a>. Packaged channels — PyPI,
-          Homebrew, containers are on the way.
+          Requires Python 3.11+ and <a href="https://docs.astral.sh/uv/">uv</a>. To try it without
+          installing, run <code>uvx --from git+{{ $repo }} darnit audit .</code>. A PyPI release that
+          installs the <code>darnit</code> command is
+          <a href="{{ $repo }}/issues/621">coming next</a>, and Homebrew and container images are
+          <a href="{{ $repo }}/issues/229">on the way</a>.
         </p>
       </div>
       <div>
-        <div class="seclabel">MCP</div>
-        <h2 class="sechead">Bring Your AI Assistant</h2>
-        <pre><span class="comment"># expose Darnit to any MCP client</span>
-<span class="prompt">$</span> uv run darnit serve --framework openssf-baseline</pre>
+        <h3 class="subhead"><span class="step__num">2</span> Connect Your Agent</h3>
+        <pre><span class="prompt">$</span> darnit install         <span class="comment"># MCP config + skills</span>
+<span class="comment"># restart Claude Code, then:</span>
+<span class="prompt">&gt;</span> /darnit-audit</pre>
         <p class="text-xs">
-          Point Claude or any MCP-capable assistant, at the server to audit, remediate, and attest
-          interactively. See the
-          <a href="https://github.com/kusari-oss/darnit/blob/main/GETTING_STARTED.md">getting started guide</a>
-          for the full walkthrough.
+          The skill runs the audit, asks about anything it can’t safely guess, previews fixes, and
+          generates the attestation. It works with Claude Code, Claude Desktop, and Cursor; see
+          <a href="{{ $repo }}/blob/main/docs/getting-started/using-skills.md">using skills</a>.
         </p>
       </div>
     </div>
+    <details class="cli-only">
+      <summary>Just want to see a report in your terminal?</summary>
+      <pre><span class="prompt">$</span> darnit audit /path/to/repo</pre>
+      <p class="text-xs">
+        The CLI is handy for a quick check or for iterating on controls. Remediation and attestation work
+        best through the agent workflow above.
+      </p>
+    </details>
+    <ul class="doclinks">
+      <li><a href="{{ $repo }}/blob/main/GETTING_STARTED.md">Getting started guide →</a></li>
+      <li><a href="{{ $repo }}/blob/main/docs/USAGE_GUIDE.md">Usage guide →</a></li>
+      <li><a href="{{ $repo }}/blob/main/ARCHITECTURE.md">Architecture →</a></li>
+      <li><a href="{{ $repo }}/blob/main/specs/013-plugin-composition/quickstart.md">Composition quickstart →</a></li>
+    </ul>
   </div>
 </section>
+
 <section class="section--alt" id="community">
   <div class="container">
     <div class="contact">
@@ -162,20 +331,25 @@
         <div class="seclabel">Community</div>
         <h2 class="sechead">Get Involved</h2>
         <p>
-          Issues, ideas, and pull requests are welcome — whether you're fixing a control, writing a plugin for
+          Issues, ideas, and pull requests are welcome, whether you’re fixing a control, writing a plugin for
           a new standard, or improving the docs. Development happens in the open on GitHub.
         </p>
-        <a href="https://github.com/kusari-oss/darnit" class="button">Star on GitHub</a>
+        <a href="{{ $repo }}" class="button">Star on GitHub</a>
+        <a href="{{ $repo }}/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22" class="button button--ghost-dark">Good first issues</a>
       </div>
       <div>
         <div class="seclabel">Project</div>
-        <h2 class="sechead">Built in the Open</h2>
+        <h2 class="sechead">Open Governance</h2>
         <p>
-          Darnit is an Apache-2.0 licensed open source project by Kusari and contributors. Read the
-          <a href="https://github.com/kusari-oss/darnit/blob/main/CONTRIBUTING.md">contributing guide</a>,
-          the <a href="https://github.com/kusari-oss/darnit/blob/main/GOVERNANCE.md">governance model</a>, and
-          the <a href="https://github.com/kusari-oss/darnit/blob/main/SECURITY.md">security policy</a> to get
-          oriented.
+          Darnit is an <a href="https://openssf.org/">OpenSSF</a> project, hosted as Darnit a Series of LF
+          Projects, LLC. It is licensed under Apache-2.0 and governed by an open
+          <a href="{{ $repo }}/blob/main/TECHNICAL-STEERING-COMMITTEE.md">Technical Steering Committee</a>.
+          It was started at <a href="https://www.kusari.dev/">Kusari</a> and is built with contributors from
+          the wider community. To get oriented, read the
+          <a href="{{ $repo }}/blob/main/CONTRIBUTING.md">contributing guide</a>, the
+          <a href="{{ $repo }}/blob/main/CHARTER.md">charter</a>, the
+          <a href="{{ $repo }}/blob/main/GOVERNANCE.md">governance model</a>, and the
+          <a href="{{ $repo }}/blob/main/SECURITY.md">security policy</a>.
         </p>
       </div>
     </div>
@@ -183,27 +357,94 @@
 </section>
 
 <script>
-/* stat counter animation */
-document.querySelectorAll(".stats-bar .stat strong").forEach((counter) => {
-  const match = counter.textContent.trim().match(/^([\d.]+)(.*)$/);
-  if (!match) return;
+/* stat counter animation (skipped when the user prefers reduced motion) */
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.querySelectorAll(".stats-bar .stat strong").forEach((counter) => {
+    const match = counter.textContent.trim().match(/^([\d.]+)(.*)$/);
+    if (!match) return;
 
-  const target = Number(match[1]);
-  const suffix = match[2];
-  const decimals = match[1].includes(".") ? match[1].split(".")[1].length : 0;
-  const duration = 1200;
-  const start = performance.now();
+    const target = Number(match[1]);
+    const suffix = match[2];
+    const decimals = match[1].includes(".") ? match[1].split(".")[1].length : 0;
+    const duration = 1200;
+    const start = performance.now();
 
-  function update(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    counter.textContent = `${(target * eased).toFixed(decimals)}${suffix}`;
-    if (progress < 1) requestAnimationFrame(update);
-  }
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = `${(target * eased).toFixed(decimals)}${suffix}`;
+      if (progress < 1) requestAnimationFrame(update);
+    }
 
-  counter.textContent = `${(0).toFixed(decimals)}${suffix}`;
-  requestAnimationFrame(update);
+    counter.textContent = `${(0).toFixed(decimals)}${suffix}`;
+    requestAnimationFrame(update);
+  });
+}
+
+/* copy buttons on code blocks */
+document.querySelectorAll("pre:not(.no-copy)").forEach((pre) => {
+  const btn = document.createElement("button");
+  btn.className = "copy";
+  btn.type = "button";
+  btn.textContent = "Copy";
+  btn.addEventListener("click", async () => {
+    /* copy only shell lines (those starting with "$"), without prompts or comments */
+    const text = [...pre.childNodes]
+      .filter((n) => !(n.classList && (n.classList.contains("comment") || n.classList.contains("copy"))))
+      .map((n) => n.textContent)
+      .join("")
+      .split("\n")
+      .filter((l) => l.trim().startsWith("$"))
+      .map((l) => l.trim().replace(/^\$\s*/, "").trim())
+      .join("\n");
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.textContent = "Copied";
+    } catch {
+      btn.textContent = "Press Ctrl+C";
+    }
+    setTimeout(() => (btn.textContent = "Copy"), 1500);
+  });
+  pre.appendChild(btn);
 });
+
+/* highlight the nav link for the section in view.
+   One pass per animation frame on scroll; a link only changes when the
+   section actually changes, so the highlight never flickers. */
+const navLinks = [...document.querySelectorAll('.nav-links a[href^="/#"], .mobile-menu a[href^="/#"]')];
+const sections = [...new Set(navLinks.map((a) => a.getAttribute("href").slice(2)))]
+  .map((id) => document.getElementById(id))
+  .filter(Boolean);
+let currentId = null;
+let ticking = false;
+
+function updateActiveLink() {
+  ticking = false;
+  const probe = window.scrollY + window.innerHeight * 0.3;
+  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+  let id = null;
+  for (const section of sections) {
+    if (section.offsetTop <= probe) id = section.id;
+  }
+  if (atBottom && sections.length) id = sections[sections.length - 1].id;
+  if (id === currentId) return;
+  currentId = id;
+  navLinks.forEach((a) => {
+    const isActive = a.getAttribute("href") === `/#${id}`;
+    a.classList.toggle("active", isActive);
+    if (isActive) a.setAttribute("aria-current", "location");
+    else a.removeAttribute("aria-current");
+  });
+}
+
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    ticking = true;
+    requestAnimationFrame(updateActiveLink);
+  }
+}, { passive: true });
+window.addEventListener("resize", updateActiveLink);
+updateActiveLink();
 </script>
 
 {{ end }}

@@ -22,8 +22,8 @@
     <header>
       <div class="container">
         <nav>
-          <a class="nav-home" href="/#home" aria-label="Home">
-            <img src="/images/logo.png" alt="The Darnit logo — a hooded figure knitting code">
+          <a class="nav-home" href="/#home" aria-label="Darnit home">
+            <img src="/images/logo-sq@180px.png" alt="">
           </a>
           <ul class="nav-links">
             {{ partial "nav.html" . }}
@@ -59,10 +59,13 @@
           <div>
             <strong>Darnit</strong> — patch the holes in your software<br>
             Copyright © Darnit a Series of LF Projects, LLC<br>
-For web site terms of use, trademark policy and other project policies please see <a href="https://lfprojects.org">https://lfprojects.org</a>.
+            For web site terms of use, trademark policy and other project policies please see
+            <a href="https://lfprojects.org">https://lfprojects.org</a>.
           </div>
           <div>
-            <a href="https://github.com/kusari-oss/darnit">GitHub</a> · Apache-2.0
+            <a href="https://github.com/darnitdevorg/darnit">GitHub</a> ·
+            <a href="https://github.com/darnitdevorg/darnit/blob/main/GETTING_STARTED.md">Docs</a> ·
+            <a href="https://github.com/darnitdevorg/darnit/blob/main/SECURITY.md">Security</a> · Apache-2.0
           </div>
         </div>
       </div>
@@ -75,6 +78,17 @@ const $menu = document.querySelector("#mobileMenu");
 $menuToggle.addEventListener("click", () => {
   const isOpen = $menu.classList.toggle("open");
   $menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+function closeMenu() {
+  $menu.classList.remove("open");
+  $menuToggle.setAttribute("aria-expanded", "false");
+}
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeMenu();
+});
+document.addEventListener("click", (e) => {
+  if (!$menu.contains(e.target) && !$menuToggle.contains(e.target)) closeMenu();
 });
 
 $menu.querySelectorAll("a").forEach(($link) => {

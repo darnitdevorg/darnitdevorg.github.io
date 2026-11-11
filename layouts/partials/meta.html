@@ -16,6 +16,8 @@
 >
 
 <meta property="og:url" content="{{ .Permalink }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="twitter:card" content="summary_large_image">
 
 {{- with .Site.Title }}<meta property="og:site_name" content="{{ . }}">{{ end }}
 
