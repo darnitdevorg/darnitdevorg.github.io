@@ -1,0 +1,39 @@
+{{ define "main" }}
+
+<section class="section">
+  <div class="container">
+    <div class="article-container">
+      <a href="/blog/" class="article-back">&larr; Back to blog</a>
+
+      <div class="article-header">
+        <h1>{{ .Title }}</h1>
+        <div class="article-meta">
+          {{ with .Date }}
+          <span>{{ .Format "January 2, 2006" }}</span>
+          {{ end }}
+          {{ with .Params.author }}
+          <span>·</span>
+          <span>By {{ . }}{{ with $.Params.author_github }} (<a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">@{{ . }}</a>){{ end }}</span>
+          {{ end }}
+          {{ with .Params.reading_time }}
+          <span>·</span>
+          <span>{{ . }} min read</span>
+          {{ end }}
+        </div>
+      </div>
+
+      <article class="prose">
+        {{ .Content }}
+      </article>
+
+      <hr class="article-divider">
+      <div class="article-footer">
+        <a href="/blog/" class="article-back">&larr; Back to blog</a>
+        <a href="https://github.com/darnitdevorg/darnit" class="button">View on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}
+
