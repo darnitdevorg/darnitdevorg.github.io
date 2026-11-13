@@ -1,0 +1,56 @@
+{{ define "main" }}
+
+<section class="section--alt">
+  <div class="container">
+    <div class="page-banner">
+      <div class="page-banner__text">
+        <div class="seclabel">Blog</div>
+        <h1 class="page-banner__title">{{ .Title | default "Blog" }}</h1>
+        {{ with .Params.description }}<p class="page-banner__desc">{{ . }}</p>{{ end }}
+      </div>
+      <div class="page-banner__art" aria-hidden="true">
+        <svg viewBox="0 0 360 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="28" y="18" width="44" height="44" rx="10" transform="rotate(45 50 40)" fill="#d3e9ea" />
+          <rect x="116" y="12" width="54" height="54" rx="12" transform="rotate(45 143 39)" stroke="#26777a" stroke-width="6" opacity="0.28" />
+          <rect x="192" y="42" width="38" height="38" rx="9" transform="rotate(45 211 61)" fill="#26777a" opacity="0.18" />
+          <rect x="266" y="14" width="52" height="52" rx="12" transform="rotate(45 292 40)" fill="#6fd0d4" opacity="0.32" />
+          <rect x="314" y="64" width="34" height="34" rx="8" transform="rotate(45 331 81)" stroke="#26777a" stroke-width="5" opacity="0.24" />
+          <path d="M84 90 L98 76 L112 90" stroke="#26777a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.3" />
+          <path d="M236 102 L250 88 L264 102" stroke="#26777a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.22" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="blog-list">
+      {{ range .Pages }}
+      <article class="blog-row">
+        <a class="blog-row__thumb" href="{{ .RelPermalink }}" aria-hidden="true" tabindex="-1">
+          <div class="blog-row__thumb-top">
+            <span>Darnit</span>
+          </div>
+          <div class="blog-row__thumb-title">{{ .Title }}</div>
+          <div class="blog-row__thumb-meta">OpenSSF Baseline &middot; MCP &middot; Amber</div>
+        </a>
+        <div class="blog-row__body">
+          <div class="blog-card__date">
+            {{ with .Date }}{{ .Format "January 2, 2006" }}{{ end }}{{ if and .Date .Params.reading_time }} &middot; {{ end }}{{ with .Params.reading_time }}{{ . }} min read{{ end }}
+          </div>
+          <h2 class="blog-card__title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+          <p class="blog-card__desc">
+            {{ with .Params.description }}{{ . }}{{ else }}{{ .Summary | plainify }}{{ end }}
+          </p>
+          <a class="blog-card__link" href="{{ .RelPermalink }}" aria-label="Read post: {{ .Title }}">
+            Read post &rarr;
+          </a>
+        </div>
+      </article>
+      {{ else }}
+      <p>No blog posts published yet. Check back soon!</p>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}
